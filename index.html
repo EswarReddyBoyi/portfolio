@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Boyi Eswar Reddy | Portfolio</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<!-- Font Awesome for Original Icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+<style>
+:root{
+  --accent:#a259ff;
+  --bg:#0d0a1a;
+  --card:#161028;
+  --text:#f5f2ff;
+  --sub:#b8a9d9;
+  --btn-text:#fff;
+  --nav-w:240px;
+}
+body.light{
+  --accent:#6a0dad;
+  --bg:#f6f4ff;
+  --card:#fff;
+  --text:#1a093d;
+  --sub:#5b4a7f;
+  --btn-text:#fff;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:"Poppins",sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+  transition:background 0.45s,color 0.45s;
+}
+
+/* NAV */
+nav{
+  position:fixed;
+  left:0;top:0;
+  height:100vh;
+  width:var(--nav-w);
+  background:linear-gradient(180deg,var(--card),rgba(0,0,0,0.06));
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding:1.6rem 1rem;
+  gap:1rem;
+  z-index:1200;
+  box-shadow:3px 0 18px rgba(0,0,0,0.3);
+  transform:translateZ(0);
+}
+.logo{
+  color:var(--accent);
+  font-weight:700;
+  font-size:1.3rem;
+  letter-spacing:0.4px;
+  text-align:center;
+}
+.nav-actions{width:100%;margin-top:8px;}
+.nav-list{list-style:none;padding:0;margin:0;width:100%;}
+.nav-list li{margin:0.45rem 0;}
+.nav-btn{
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:0.9rem;
+  padding:0.65rem 0.9rem;
+  border-radius:10px;
+  color:var(--text);
+  cursor:pointer;
+  font-weight:600;
+  transition:all .28s ease;
+  user-select:none;
+  border:1px solid transparent;
+}
+.nav-btn i{width:22px;text-align:center;font-size:1.05rem;color:var(--accent)}
+.nav-btn:hover{transform:translateX(6px); box-shadow:0 6px 20px rgba(0,0,0,0.35)}
+.nav-btn.active{
+  background:linear-gradient(270deg,var(--accent), #bd83e9 60%);
+  color:var(--btn-text);
+  box-shadow:0 8px 30px rgba(162,89,255,0.18);
+}
+.nav-bottom{
+  margin-top:auto;
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:0.8rem;
+}
+
+.left-socials {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+.left-socials a {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  border: 1px solid rgba(255,255,255,0.08);
+  background: var(--card);
+  transition: all 0.25s ease;
+  text-decoration: none;
+}
+.left-socials a:hover {
+  transform: translateY(-4px) scale(1.06);
+  color: var(--btn-text);
+  background: var(--accent);
+}
+
+
+
+/* resume download */
+.resume-btn{
+  width:100%;
+  display:flex;
+  gap:.6rem;
+  align-items:center;
+  justify-content:center;
+  padding:.6rem;
+  border-radius:10px;
+  background:transparent;
+  color:var(--accent);
+  font-weight:700;
+  border:1px dashed rgba(0,0,0,0.1);
+  text-decoration:none;
+}
+.resume-btn i{font-size:1rem}
+.resume-btn:hover{
+  background:linear-gradient(90deg,var(--accent), #c77dff);
+  color:var(--btn-text);
+  transform:translateY(-3px);
+  box-shadow:0 10px 30px rgba(162,89,255,0.12);
+  text-decoration:none;
+}
+
+
+/* theme toggle */
+.theme-toggle{
+  width:46px;height:46px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--accent); color:var(--btn-text);
+  cursor:pointer;font-size:1.1rem;
+  box-shadow:0 6px 18px rgba(162,89,255,0.12);
+}
+
+/* main content area */
+.main {
+  margin-left:var(--nav-w);
+  min-height:100vh;
+  transition:margin-left .35s;
+  position:relative;
+  overflow:hidden;
+}
+
+/* hero + viewport wrapper */
+.viewport{
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(145deg,var(--bg), rgba(0,0,0,0.06));
+  padding:2.6rem;
+}
+
+/* Panel system: only one panel visible; animate in/out */
+.panel-wrap{
+  width:100%;
+  max-width:1370px;
+  height:93vh;
+  position:relative;
+  overflow:hidden;
+  border-radius:14px;
+  background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.03));
+  padding:1.6rem;
+  box-shadow:0 20px 50px rgba(0,0,0,0.35);
+}
+
+/* each panel fullscreen inside wrap */
+.panel{
+  position:absolute;
+  inset:0;
+  padding:2rem;
+  overflow:auto;
+  opacity:0;
+  transform:translateX(30px) scale(.995);
+  transition:transform .55s cubic-bezier(.2,.9,.3,1), opacity .45s;
+  will-change:transform,opacity;
+  pointer-events:none;
+  display:block;
+}
+
+/* active panel visible */
+.panel.active{
+  opacity:1;
+  transform:translateX(0) scale(1);
+  pointer-events:auto;
+}
+
+/* enter/exit animations classes for direction control */
+.panel.enter-left{ transform: translateX(-100%) scale(.98); opacity:0; }
+.panel.enter-right{ transform: translateX(100%) scale(.98); opacity:0; }
+.panel.incoming{ transform: translateX(0) scale(1); opacity:1; transition:transform .45s cubic-bezier(.2,.9,.3,1),opacity .45s; }
+.panel.exiting-left{ transform: translateX(-120%) scale(.95); opacity:0; transition:transform .45s,opacity .4s; }
+.panel.exiting-right{ transform: translateX(120%) scale(.95); opacity:0; transition:transform .45s,opacity .4s; }
+
+/* Panel content style */
+.panel h2{ color:var(--accent); font-size:1.6rem; margin-bottom:.6rem; display:flex;gap:.6rem; align-items:center; }
+.panel h2 i{font-size:1.25rem;color:var(--accent); background:transparent}
+.panel p{ color:var(--sub); line-height:1.6; margin-bottom:1rem; }
+
+/* hero card */
+.hero-card{
+  display:flex; gap:1.6rem; align-items:center;
+  background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));
+  border-radius:12px; padding:1.2rem;
+}
+.hero-left{ width:170px; text-align:center; }
+.hero-left img{ width:130px; height:130px; object-fit:cover; border-radius:50%; border:4px solid var(--accent); box-shadow:0 10px 30px rgba(0,0,0,0.35); }
+.hero-right{flex:1}
+.hero-right h1{ margin:0; font-size:1.6rem; background:linear-gradient(90deg,var(--accent), #c77dff); -webkit-background-clip:text; -webkit-text-fill-color:transparent;}
+.tagline{ color:var(--sub); margin-top:6px; font-weight:600; }
+
+/* cards & lists */
+.card {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.28);
+  transition: transform 0.25s ease, box-shadow 0.3s ease, border 0.3s ease;
+}
+
+/* Gorgeous purple hover glow */
+.card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow:
+    0 0 15px rgba(162, 89, 255, 0.3),
+    0 0 30px rgba(162, 89, 255, 0.15),
+    0 6px 20px rgba(0,0,0,0.25);
+  border: 1px solid rgba(162, 89, 255, 0.4);
+}
+
+.skills-grid, .projects-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1rem; }
+
+/* icons for education/sections */
+.section-icon{
+  width:44px;height:44px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;
+  margin-right:.6rem;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));
+  border:1px solid rgba(255,255,255,0.03);
+}
+
+/* subtle floating animation */
+@keyframes floaty{
+  0%{ transform: translateY(0px) }
+  50%{ transform: translateY(-8px) }
+  100%{ transform: translateY(0px) }
+}
+.floaty{ animation: floaty 4s ease-in-out infinite; }
+
+/* utilities */
+.row{ display:flex; gap:1rem; align-items:center; flex-wrap:wrap; }
+.small{ font-size:.92rem; color:var(--sub) }
+.chips{ padding:.4rem .7rem; border-radius:18px; background:rgba(255,255,255,0.02); font-weight:600 }
+
+/* footer inside panel */
+.panel-footer{ margin-top:1.2rem; color:var(--sub); font-size:.9rem }
+
+/* contact form */
+#contactForm input,#contactForm textarea{ width:100%; padding:.8rem; border-radius:8px; border:none; background:var(--bg); color:var(--text); margin-bottom:.6rem; box-shadow:inset 0 0 0 1px rgba(255,255,255,0.02) }
+#contactForm button{ padding:.7rem 1rem; border-radius:8px; border:none; background:var(--accent); color:var(--btn-text); font-weight:700; cursor:pointer }
+
+/* responsive */
+/* ---------- Responsive Enhancements ---------- */
+
+/* Tablets (≤ 900px): compact nav but keep laptop look */
+@media (max-width: 900px) {
+  :root { --nav-w: 72px; }
+
+  nav {
+    width: 72px;
+    padding: 1rem 0.6rem;
+  }
+
+  .logo { display: none; }
+  .nav-btn span { display: none; }
+
+  .main { margin-left: 72px; }
+  .panel-wrap { height: 82vh; max-width: 1000px; }
+  .hero-card { flex-direction: column; text-align: center; }
+  .hero-right h2 { font-size: 1.3rem; }
+}
+
+/* Phones (≤ 600px): stacked layout with full width */
+@media (max-width: 600px) {
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0.5rem 0.8rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+    z-index: 1400;
+  }
+
+  .main {
+    margin-left: 0;
+    margin-top: 72px; /* space for top nav */
+  }
+
+  .panel-wrap {
+    max-width: 100%;
+    height: calc(100vh - 110px);
+    border-radius: 0;
+    padding: 1rem;
+    box-shadow: none;
+  }
+
+  .hero-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .hero-left img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .hero-right h2 {
+    font-size: 1.25rem;
+    line-height: 1.4;
+  }
+
+  .hero-right p {
+    font-size: 0.92rem;
+    text-align: justify;
+  }
+
+  .skills-grid,
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    padding: 0.9rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+  }
+
+  .row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+
+  .left-socials {
+    justify-content: center;
+  }
+
+  footer {
+    margin-left: 0;
+    padding: 10px;
+    font-size: 0.8rem;
+  }
+}
+
+/* ---------- Mobile Hamburger Menu ---------- */
+.hamburger {
+  display: none;
+  font-size: 1.5rem;
+  color: var(--accent);
+  cursor: pointer;
+  z-index: 1500;
+}
+
+/* Mobile menu hidden by default */
+nav.mobile-active .nav-actions {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+  .hamburger {
+    display: block;
+  }
+
+  nav {
+    position: fixed;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0.7rem 1rem;
+  }
+
+  .nav-actions {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background: var(--card);
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  .nav-list {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .nav-btn {
+    justify-content: center;
+    font-size: 0.95rem;
+  }
+
+  .nav-bottom {
+    display: none; /* Hide bottom resume + socials on topbar */
+  }
+}
+
+
+</style>
+</head>
+<body class="light">
+
+<nav aria-label="Primary">
+  <div class="logo">Eswar Reddy</div>
+  <div class="hamburger" id="hamburger" title="Menu">
+    <i class="fa-solid fa-bars"></i>
+  </div>
+
+  <div class="nav-actions">
+    <ul class="nav-list" role="tablist">
+      <li><div class="nav-btn active" role="tab" data-target="summary"><i class="fa-solid fa-user"></i><span>About</span></div></li>
+      <li><div class="nav-btn" role="tab" data-target="experience"><i class="fa-solid fa-briefcase"></i><span>Experience</span></div></li>
+      <li><div class="nav-btn" role="tab" data-target="skills"><i class="fa-solid fa-code"></i><span>Skills</span></div></li>
+      <li><div class="nav-btn" role="tab" data-target="projects"><i class="fa-solid fa-diagram-project"></i><span>Projects</span></div></li>
+      <li><div class="nav-btn" role="tab" data-target="certifications"><i class="fa-solid fa-certificate"></i><span>Certifications</span></div></li>
+      <li><div class="nav-btn" role="tab" data-target="education"><i class="fa-solid fa-graduation-cap"></i><span>Education</span></div></li>
+      <li><div class="nav-btn" role="tab" data-target="contact"><i class="fa-solid fa-envelope"></i><span>Contact</span></div></li>
+    </ul>
+  </div>
+
+  <div class="nav-bottom">
+    <a class="resume-btn" href="resume.pdf" download title="Download Resume"><i class="fa-solid fa-download"></i><span>Resume</span></a>
+
+    <div class="left-socials" aria-hidden="false">
+      <a href="https://linkedin.com/in/eswarreddyboyi" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://github.com/EswarReddyBoyi" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://instagram.com/eshwarboyi" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://twitter.com/EswarBoyi" target="_blank" aria-label="twitter"><i class="fab fa-twitter"></i></a>
+    </div>
+
+    <div style="height:8px"></div>
+    <div class="theme-toggle" id="themeToggle" title="Toggle theme">🌞</div>
+  </div>
+</nav>
+
+<main class="main" id="main">
+  <div class="viewport">
+    <div class="panel-wrap" id="panelWrap">
+
+      <!-- ABOUT / SUMMARY -->
+      <section id="summary" class="panel active" role="tabpanel" aria-labelledby="About">
+        <div class="hero-card card">
+          <div class="hero-left">
+            <img src="profile.jpg" alt="Eswar Reddy" />
+            <div style="height:10px"></div>
+            <a class="chips" href="#contact" style="text-decoration:none">Hire Me</a>
+          </div>
+          <div class="hero-right">
+            <h2 style="display:flex;align-items:center;gap:.6rem"><i class="fa-solid fa-hand-peace section-icon"></i> Hi, I'm <span style="margin-left:6px">Boyi Eswar Reddy</span></h2>
+            <div class="tagline small">Full-Stack Developer · AI & ML Engineer · Tech Innovator</div>
+            <p class="small" style="margin-top:.8rem">
+              I'm an innovative <strong>Computer Science Engineer</strong> with hands-on experience in 
+    <strong>Full-Stack Development, Data Science, and Artificial Intelligence</strong>. I’ve built and deployed
+    multiple real-world applications integrating <strong>MERN stack</strong>, <strong>Machine Learning</strong>, and 
+    <strong>Cloud Technologies (AWS & OCI)</strong>.  
+    <br><br>
+    My work spans from developing <strong>interactive web apps</strong> to 
+    <strong>AI-powered systems</strong> for automation, analytics, and real-time monitoring. 
+    I’m passionate about crafting scalable, secure, and data-driven products that improve
+    user experience and decision-making.  
+    <br><br>
+    Certified in <strong>Generative AI, AWS Cloud, MongoDB, and Full Stack Development</strong>, 
+    I focus on blending <strong>creativity with technology</strong> to build impactful digital solutions.
+            </p>
+
+            <div style="margin-top:12px" class="row">
+              <a class="resume-btn" href="resume.pdf" download style="padding:.5rem .8rem;font-size:.95rem"><i class="fa-solid fa-file-arrow-down"></i>&nbsp;Resume</a>
+            </div>
+          </div>
+        </div>
+
+<div class="card" style="margin-top:1rem">
+  <h2><i class="fa-solid fa-lightbulb"></i> Quick Highlights</h2>
+  <div class="row" style="margin-top:.8rem; flex-wrap:wrap;">
+
+    <div class="card" style="padding:.8rem 1rem; background:transparent; box-shadow:none; flex:1 1 240px;">
+      <strong><i class="fa-solid fa-location-dot" style="color:var(--accent)"></i> Location:</strong><br>
+      <span class="small">Visakhapatnam, India<br>Open for remote or hybrid roles</span>
+    </div>
+
+    <div class="card" style="padding:.8rem 1rem; background:transparent; box-shadow:none; flex:1 1 240px;">
+      <strong><i class="fa-solid fa-microchip" style="color:var(--accent)"></i> Tech Expertise:</strong><br>
+      <span class="small">Full-Stack (MERN) · Python · TensorFlow · Cloud (AWS, OCI)</span>
+    </div>
+
+    <div class="card" style="padding:.8rem 1rem; background:transparent; box-shadow:none; flex:1 1 240px;">
+      <strong><i class="fa-solid fa-user-tie" style="color:var(--accent)"></i> Strengths:</strong><br>
+      <span class="small">Leadership · Problem Solving · Collaboration · Adaptability</span>
+    </div>
+
+    <div class="card" style="padding:.8rem 1rem; background:transparent; box-shadow:none; flex:1 1 240px;">
+      <strong><i class="fa-solid fa-globe" style="color:var(--accent)"></i> Languages:</strong><br>
+      <span class="small">English · Telugu · Hindi</span>
+    </div>
+
+  </div>
+</div>
+
+
+        <div class="panel-footer">Tip: Click items on the left to slide into each section with smooth animations.</div>
+      </section>
+
+      <!-- EXPERIENCE -->
+      <section id="experience" class="panel" role="tabpanel">
+  <h2><i class="fa-solid fa-briefcase section-icon"></i> Experience</h2>
+
+  <!-- Unified Mentor Internship -->
+  <div class="card">
+    <h3><i class="fa-solid fa-building"></i> Full Stack Web Development Intern – Unified Mentor</h3>
+    <small class="small">Aug 2025 – Oct 2025 · Remote</small>
+    <ul class="small" style="margin-top:.6rem; line-height:1.6;">
+      <li>Designed and developed dynamic full-stack web applications using the <strong>MERN Stack (MongoDB, Express.js, React, Node.js)</strong>.</li>
+      <li>Implemented <strong>JWT-based authentication</strong> and user session handling to ensure secure login and data integrity.</li>
+      <li>Optimized backend RESTful APIs and enhanced UI/UX responsiveness across devices using modern React hooks and Tailwind CSS.</li>
+      <li>Deployed and managed applications on <strong>Render</strong> and <strong>Netlify</strong> ensuring smooth CI/CD integration.</li>
+      <li>Collaborated in an agile environment, utilizing Git and GitHub for version control and teamwork.</li>
+    </ul>
+    <p class="small" style="margin-top:.6rem;"><strong>Key Tech:</strong> React.js · Node.js · Express.js · MongoDB · Tailwind CSS · Render · Netlify</p>
+  </div>
+
+  <!-- Code Tech IT Solutions Internship -->
+  <div class="card">
+    <h3><i class="fa-solid fa-laptop-code"></i> Data Science Intern – Code Tech IT Solutions</h3>
+    <small class="small">Aug 2025 · Remote</small>
+    <ul class="small" style="margin-top:.6rem; line-height:1.6;">
+      <li>Performed <strong>Exploratory Data Analysis (EDA)</strong> and feature engineering on large datasets to identify key business trends.</li>
+      <li>Developed predictive <strong>Machine Learning models</strong> using Python libraries like Scikit-learn and TensorFlow to deliver actionable insights.</li>
+      <li>Automated data cleaning and visualization processes using <strong>Pandas, NumPy, and Matplotlib</strong> to reduce manual effort by 40%.</li>
+      <li>Built interactive dashboards and reports to communicate findings effectively with the development and analytics teams.</li>
+    </ul>
+    <p class="small" style="margin-top:.6rem;"><strong>Key Tech:</strong> Python · Pandas · NumPy · TensorFlow · Scikit-learn · Matplotlib · Power BI</p>
+  </div>
+</section>
+
+
+     <!-- SKILLS -->
+<section id="skills" class="panel" role="tabpanel">
+  <h2><i class="fa-solid fa-code section-icon"></i> Technical Skills</h2>
+
+  <div class="skills-grid">
+
+    <div class="card">
+      <strong>Programming Languages:</strong>
+      <p class="small">Java · JavaScript (ES6+) · Python · SQL · R · C</p>
+    </div>
+
+    <div class="card">
+      <strong>Frontend Development:</strong>
+      <p class="small">React.js · HTML5 · CSS3 · Bootstrap · Tailwind CSS · REST API Integration</p>
+    </div>
+
+    <div class="card">
+      <strong>Backend Development:</strong>
+      <p class="small">Node.js · Express.js · Flask · FastAPI · JWT Authentication · API Design</p>
+    </div>
+
+    <div class="card">
+      <strong>Databases:</strong>
+      <p class="small">MongoDB · MySQL · Firebase · PostgreSQL (basic)</p>
+    </div>
+
+    <div class="card">
+      <strong>AI / Machine Learning:</strong>
+      <p class="small">TensorFlow · Keras · PyTorch · Scikit-learn · OpenCV · Pandas · NumPy · Matplotlib · Seaborn</p>
+    </div>
+
+    <div class="card">
+      <strong>Cloud & DevOps:</strong>
+      <p class="small">AWS · Oracle Cloud Infrastructure (OCI) · Render · Netlify · Vercel · Docker · Kubernetes · GitHub Actions</p>
+    </div>
+
+    <div class="card">
+      <strong>Tools & Other Technologies:</strong>
+      <p class="small">Git & GitHub · Jupyter Notebook · VS Code · Postman · Google Colab · Power BI · Excel (Advanced)</p>
+    </div>
+
+    <div class="card">
+      <strong>Core Competencies:</strong>
+      <p class="small">Full-Stack App Development · API Design · Data Science & Visualization · Problem Solving · Agile Development</p>
+    </div>
+
+  </div>
+</section>
+
+
+      <!-- PROJECTS -->
+      <section id="projects" class="panel" role="tabpanel">
+        <h2><i class="fa-solid fa-diagram-project section-icon"></i> Projects</h2>
+
+        <div class="projects-grid">
+          <div class="card project-card">
+            <h3><i class="fa-solid fa-list-check"></i> InQuiza – Interactive Quiz System</h3>
+            <p>Full-stack quiz platform with Google Sign-In, attempt limits, and dashboards.</p>
+            <a href="https://github.com/22BCE8093-Eswar/Interactive-Quiz" target="_blank" rel="noopener">View Project</a>
+          </div>
+
+          <div class="card project-card">
+            <h3><i class="fa-solid fa-robot"></i> Aidea – AI Chatbot Web App</h3>
+            <p>Responsive AI chatbot with code-copy & helpful programming snippets.</p>
+            <a href="https://github.com/22BCE8093-Eswar/Aidea-Friendly-AI-chatBot" target="_blank" rel="noopener">View Project</a>
+          </div>
+
+          <div class="card project-card">
+            <h3><i class="fa-solid fa-cow"></i> ANUGO – Cattle Lameness Detection</h3>
+            <p>AI-based livestock health monitoring using YOLO, ResNet and video processing.</p>
+            <a href="https://github.com/22BCE8093-Eswar/cattle-lameness" target="_blank" rel="noopener">View Project</a>
+          </div>
+
+          <div class="card project-card">
+            <h3><i class="fa-solid fa-heart-pulse"></i> Heart Rate Analyzer (BLE & ML)</h3>
+            <p>BLE health monitor streaming vitals to ML models with alert systems.</p>
+            <a href="https://github.com/22BCE8093-Eswar/Heart-Rate-Analyzer" target="_blank" rel="noopener">View Project</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- CERTIFICATIONS -->
+<section id="certifications" class="panel" role="tabpanel">
+  <h2><i class="fa-solid fa-certificate section-icon"></i> Certifications & Credentials</h2>
+
+  <div class="skills-grid">
+
+    <div class="card">
+      <h3><i class="fa-solid fa-cloud"></i> Oracle Cloud Infrastructure Generative AI Professional</h3>
+      <small class="small">Oracle · 2025</small>
+      <p class="small">
+        Earned proficiency in <strong>Generative AI, OCI services, model deployment, and automation pipelines</strong>.
+        Gained experience with <strong>LLMs, AI APIs, and cloud-integrated model lifecycle management</strong>.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3><i class="fa-brands fa-aws"></i> AWS Certified Cloud Practitioner</h3>
+      <small class="small">Amazon Web Services · 2025</small>
+      <p class="small">
+        Validated expertise in <strong>AWS Cloud architecture, EC2, S3, IAM, and security models</strong>.
+        Demonstrated understanding of <strong>cloud cost optimization</strong> and deployment best practices.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3><i class="fa-solid fa-database"></i> MongoDB Associate Database Administrator</h3>
+      <small class="small">MongoDB University · 2025</small>
+      <p class="small">
+        Mastered <strong>database design, indexing, aggregation pipelines, and replication</strong>.
+        Skilled in <strong>managing MongoDB clusters, queries, and optimization for performance and scalability</strong>.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3><i class="fa-solid fa-code"></i> Java Full Stack Development Certification</h3>
+      <small class="small">Imarticus Learning · 2024</small>
+      <p class="small">
+        Trained in <strong>Java, Spring Boot, React.js, RESTful APIs, and database integration</strong>.
+        Built and deployed a complete <strong>Java-based full-stack application</strong> as part of the program.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+      <!-- EDUCATION -->
+<section id="education" class="panel" role="tabpanel">
+  <h2><i class="fa-solid fa-graduation-cap section-icon"></i> Education</h2>
+
+  <div class="card edu">
+    <h3><i class="fa-solid fa-school"></i> Vellore Institute of Technology – Andhra Pradesh</h3>
+    <small class="small">Bachelor of Technology (B.Tech) in Computer Science and Engineering · 2021 – 2025</small>
+    <p class="small">CGPA: <strong>8.66 / 10</strong></p>
+    <p class="small">
+      Focused on <strong>Artificial Intelligence, Machine Learning, Cloud Computing, and Full-Stack Web Development</strong>.
+      Gained hands-on experience through projects integrating <strong>AI-powered health systems</strong> and 
+      <strong>IoT-based real-time analytics</strong>.
+    </p>
+  </div>
+
+  <div class="card">
+    <h3><i class="fa-solid fa-book-open"></i> Relevant Coursework</h3>
+    <ul class="small" style="line-height:1.7;">
+      <li>Data Structures and Algorithms</li>
+      <li>Machine Learning and Deep Learning</li>
+      <li>Database Management Systems</li>
+      <li>Cloud Computing and Virtualization</li>
+      <li>Operating Systems & Computer Networks</li>
+      <li>Software Engineering & Agile Development</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3><i class="fa-solid fa-trophy"></i> Academic Achievements & Leadership</h3>
+    <ul class="small" style="line-height:1.7;">
+      <li><strong>Team Lead</strong> – AI-based Cattle Lameness Detection Project under VIT-AP Innovation Program.</li>
+      <li>Received recognition for excellence in <strong>AI Project Development and Presentation</strong>.</li>
+      <li>Participated in multiple national-level <strong>Hackathons and Coding Competitions</strong> (CodeChef, LeetCode).</li>
+      <li>Actively contributed to open-source projects related to <strong>ML model integration and web app deployment</strong>.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3><i class="fa-solid fa-user-graduate"></i> Extracurricular & Research Involvement</h3>
+    <ul class="small" style="line-height:1.7;">
+      <li>Presented a research-based mini project on <strong>Human Gait Analysis using YOLOv8 + ResNet + LSTM</strong>.</li>
+      <li>Worked on facial expression recognition using <strong>FER-2013 Dataset</strong> integrated with a web interface.</li>
+      <li>Volunteered in <strong>AI and Cloud Computing Workshops</strong> organized by the VIT Technical Club.</li>
+    </ul>
+  </div>
+</section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="panel" role="tabpanel">
+        <h2><i class="fa-solid fa-envelope section-icon"></i> Contact Me</h2>
+        <form id="contactForm" action="https://formsubmit.co/eswarboyi7@gmail.com" method="POST">
+          <input type="text" name="name" placeholder="Your Name" required />
+          <input type="email" name="email" placeholder="Your Email" required />
+          <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+          <button type="submit">Send Message</button>
+        </form>
+
+        <div class="card" style="margin-top:1rem">
+  <h3>Socials</h3>
+  <div class="left-socials">
+    <a href="https://linkedin.com/in/eswarreddyboyi" target="_blank" rel="noopener" aria-label="LinkedIn">
+      <i class="fab fa-linkedin-in"></i>
+    </a>
+    <a href="https://github.com/EswarReddyBoyi" target="_blank" rel="noopener" aria-label="GitHub">
+      <i class="fab fa-github"></i>
+    </a>
+    <a href="https://www.instagram.com/eshwarboyi" target="_blank" rel="noopener" aria-label="Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://twitter.com/EswarBoyi" target="_blank" rel="noopener" aria-label="Twitter">
+      <i class="fab fa-twitter"></i>
+    </a>
+  </div>
+</div>
+
+
+      </section>
+
+    </div><!-- panel-wrap -->
+  </div><!-- viewport -->
+</main>
+
+<footer style="margin-left:var(--nav-w); padding:12px; color:var(--sub); text-align:center; background:transparent">
+  © 2025 Boyi Eswar Reddy | Built with 💜 Passion & Precision
+</footer>
+
+<script>
+/* ---------- Panel navigation with slide animations ---------- */
+const navBtns = document.querySelectorAll('.nav-btn');
+const panels = document.querySelectorAll('.panel');
+let currentId = 'summary';
+let animating = false;
+
+function showPanel(targetId, direction = 'left'){
+  if(animating) return;
+  if(targetId === currentId) return;
+  animating = true;
+  const from = document.getElementById(currentId);
+  const to = document.getElementById(targetId);
+
+  // remove active from nav, add to clicked
+  navBtns.forEach(b => b.classList.toggle('active', b.dataset.target === targetId));
+
+  // prepare classes
+  // direction 'left' => new panel enters from left (enter-left -> incoming), old exits right
+  // direction 'right' => reverse
+  const enterClass = direction === 'left' ? 'enter-left' : 'enter-right';
+  const exitClass = direction === 'left' ? 'exiting-right' : 'exiting-left';
+
+  // ensure panels start at correct position
+  to.classList.add(enterClass);
+  to.classList.add('active');
+
+  // small timeout to let the browser apply initial transform
+  requestAnimationFrame(()=> {
+    // trigger incoming transition
+    to.classList.add('incoming');
+    // animate outgoing
+    from.classList.add(exitClass);
+    // remove active status visually from outgoing after a tick
+    from.classList.remove('active');
+  });
+
+  // cleanup after animation
+  setTimeout(()=>{
+    // cleanup classes
+    to.classList.remove(enterClass);
+    to.classList.remove('incoming');
+    from.classList.remove(exitClass);
+    currentId = targetId;
+    animating = false;
+    // update hash for deep-link & accessibility
+    history.replaceState(null, '', '#' + targetId);
+  }, 520);
+}
+
+// click handlers on nav
+navBtns.forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    const target = btn.dataset.target;
+    // decide direction based on order in DOM (so navigation feels natural)
+    const ids = Array.from(document.querySelectorAll('.nav-btn')).map(b=>b.dataset.target);
+    const fromIndex = ids.indexOf(currentId);
+    const toIndex = ids.indexOf(target);
+    const dir = toIndex < fromIndex ? 'right' : 'left';
+    showPanel(target, dir);
+  });
+});
+
+// support hash navigation on load
+window.addEventListener('load', ()=>{
+  const hash = location.hash.replace('#','');
+  if(hash && document.getElementById(hash)){
+    // find direction relative to default
+    const ids = Array.from(document.querySelectorAll('.nav-btn')).map(b=>b.dataset.target);
+    const idxHash = ids.indexOf(hash), idxCur = ids.indexOf(currentId);
+    const dir = idxHash < idxCur ? 'right' : 'left';
+    // brief delay so underlay styles settle
+    setTimeout(()=>showPanel(hash,dir), 80);
+  }
+});
+
+/* highlight nav by scroll - disabled because panels are independent, we rely on clicks */
+/* Theme toggle */
+const themeToggle = document.getElementById('themeToggle');
+themeToggle.addEventListener('click', ()=>{
+  document.body.classList.toggle('light');
+  themeToggle.textContent = document.body.classList.contains('light') ? '🌚' : '🌞';
+});
+
+/* Accessibility: keyboard navigation for tabs */
+document.addEventListener('keydown', (e) => {
+  if(e.key === 'ArrowUp' || e.key === 'ArrowLeft'){
+    // previous
+    const ids = Array.from(document.querySelectorAll('.nav-btn'));
+    let idx = ids.findIndex(b => b.classList.contains('active'));
+    idx = (idx <= 0) ? ids.length - 1 : idx - 1;
+    ids[idx].click();
+  } else if(e.key === 'ArrowDown' || e.key === 'ArrowRight'){
+    const ids = Array.from(document.querySelectorAll('.nav-btn'));
+    let idx = ids.findIndex(b => b.classList.contains('active'));
+    idx = (idx >= ids.length - 1) ? 0 : idx + 1;
+    ids[idx].click();
+  }
+});
+
+/* small improvement: smooth image loading fallback */
+document.querySelectorAll('img').forEach(img=>{
+  if(!img.complete){
+    img.style.opacity = 0;
+    img.addEventListener('load', ()=> { img.style.transition='opacity .6s'; img.style.opacity = 1; });
+  }
+});
+
+// Enable "Hire Me" button to open the Contact panel
+document.querySelectorAll('a[href="#contact"]').forEach(link=>{
+  link.addEventListener('click', (e)=>{
+    e.preventDefault();
+    // smoothly animate to contact section
+    showPanel('contact', 'left');
+    // after animation completes, focus the name field
+    setTimeout(()=>{
+      const nameInput = document.querySelector('#contactForm input[name="name"]');
+      if(nameInput) nameInput.focus();
+    }, 600);
+  });
+});
+
+/* ---------- Hamburger toggle for mobile ---------- */
+const hamburger = document.getElementById('hamburger');
+const nav = document.querySelector('nav');
+
+hamburger.addEventListener('click', () => {
+  nav.classList.toggle('mobile-active');
+  const icon = hamburger.querySelector('i');
+  if (nav.classList.contains('mobile-active')) {
+    icon.classList.replace('fa-bars', 'fa-xmark');
+  } else {
+    icon.classList.replace('fa-xmark', 'fa-bars');
+  }
+});
+
+</script>
+</body>
+</html>
