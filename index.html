@@ -94,6 +94,7 @@ nav{
   flex-direction:column;
   align-items:center;
   gap:0.8rem;
+  margin-bottom: 1.5rem;
 }
 
 .left-socials {
@@ -155,6 +156,8 @@ nav{
   background:var(--accent); color:var(--btn-text);
   cursor:pointer;font-size:1.1rem;
   box-shadow:0 6px 18px rgba(162,89,255,0.12);
+    margin-top: 0.2rem; /* Adds small spacing below social icons */
+  margin-bottom: 0.8rem;
 }
 
 /* main content area */
@@ -322,14 +325,30 @@ nav{
   .main {
     margin-left: 0;
     margin-top: 72px; /* space for top nav */
+    display: flex;
+    justify-content: center;
+  }
+
+  .viewport {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 0;
   }
 
   .panel-wrap {
-    max-width: 100%;
-    height: calc(100vh - 110px);
-    border-radius: 0;
+    width: 90%;
+    max-width: 90%;
+    height: auto;
+    min-height: calc(100vh - 100px);
+    border-radius: 12px;
     padding: 1rem;
-    box-shadow: none;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+    background: var(--card);
+  }
+
+  .panel {
+    padding: 1rem;
   }
 
   .hero-card {
@@ -337,6 +356,7 @@ nav{
     text-align: center;
     padding: 1rem;
     gap: 1rem;
+    width: 100%;
   }
 
   .hero-left img {
@@ -360,27 +380,35 @@ nav{
   }
 
   .card {
-    padding: 0.9rem;
-    border-radius: 10px;
+    width: 100%;
+    max-width: 100%;
+    padding: 1rem;
+    border-radius: 12px;
     margin-bottom: 1rem;
+    background: var(--card);
   }
 
   .row {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.8rem;
+    width: 100%;
   }
 
   .left-socials {
     justify-content: center;
+    flex-wrap: wrap;
   }
 
   footer {
     margin-left: 0;
     padding: 10px;
     font-size: 0.8rem;
+    text-align: center;
+    width: 100%;
   }
 }
+
 
 /* ---------- Mobile Hamburger Menu ---------- */
 .hamburger {
@@ -781,6 +809,40 @@ nav.mobile-active .nav-actions {
     </a>
     <a href="https://twitter.com/EswarBoyi" target="_blank" rel="noopener" aria-label="Twitter">
       <i class="fab fa-twitter"></i>
+    </a>
+    <!-- LeetCode -->
+    <a href="https://leetcode.com/u/EswarreddyBoyi/" target="_blank" rel="noopener" aria-label="LeetCode">
+      <i class="fa-solid fa-code"></i>
+    </a>
+    <!-- HackerRank -->
+    <a href="https://www.hackerrank.com/profile/eswar_22bce8093" target="_blank" rel="noopener" aria-label="HackerRank">
+      <i class="fab fa-hackerrank"></i>
+    </a>
+        <!-- Codeforces -->
+    <a href="https://codeforces.com/profile/EswarBoyi" target="_blank" rel="noopener" aria-label="Codeforces">
+      <i class="fa-solid fa-bolt"></i>
+    </a>
+
+    <!-- CodeChef -->
+    <a href="https://www.codechef.com/users/eswarboyi" target="_blank" rel="noopener" aria-label="CodeChef">
+      <i class="fa-solid fa-utensils"></i>
+    </a>
+
+    <!-- HackerEarth -->
+    <a href="https://www.hackerearth.com/@eswarboyi" target="_blank" rel="noopener" aria-label="HackerEarth">
+      <i class="fa-solid fa-globe"></i>
+    </a>
+    <!-- YouTube -->
+    <a href="https://www.youtube.com/@eswarboyi" target="_blank" rel="noopener" aria-label="YouTube">
+      <i class="fab fa-youtube"></i>
+    </a>
+     <!-- Email -->
+    <a href="mailto:eswarboyi7@gmail.com" aria-label="Email">
+      <i class="fas fa-envelope"></i>
+    </a>
+    <!-- Phone -->
+    <a href="tel:+919390205553" aria-label="Phone">
+      <i class="fas fa-phone"></i>
     </a>
   </div>
 </div>
