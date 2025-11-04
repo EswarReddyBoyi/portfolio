@@ -515,73 +515,113 @@ nav.mobile-active .nav-actions {
 }
 
 @media (max-width: 600px) {
-  .hamburger {
-    display: block;
-    flex-shrink: 0;
+
+  body, html {
+    overflow-x: hidden !important;
+    width: 100%;
   }
 
+  /* Topbar visible always */
+  .mobile-topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    height: 60px;
+    background: var(--card);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+    z-index: 2000;
+  }
+
+  .mobile-name {
+    display: block;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--accent);
+    text-align: center;
+    flex: 1;
+    margin: 0 0.8rem;
+  }
+
+  /* Hide side nav on mobile until hamburger clicked */
   nav {
     position: fixed;
+    top: 0;
+    left: 0;
     width: 100vw;
     height: auto;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 0.7rem 1rem;
-    overflow-x: hidden;
+    background: var(--card);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.3);
+    z-index: 1500;
+    overflow: hidden;
+    padding-top: 60px; /* offset for topbar height */
+    transition: max-height 0.35s ease;
+    max-height: 0;
+  }
+
+  nav.mobile-active {
+    max-height: 500px; /* opens smoothly */
   }
 
   .nav-actions {
-    display: none;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    width: 100%;
-    background: var(--card);
+    display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 0.8rem;
+    width: 100%;
     padding: 1rem 0;
-    border-radius: 0 0 12px 12px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-    transition: all 0.3s ease;
-    opacity: 0;
-    transform: translateY(-20px);
-    overflow-x: hidden;
   }
 
   .nav-list {
     flex-direction: column;
     align-items: center;
-    gap: 0.8rem;
+    width: 100%;
   }
 
   .nav-btn {
     justify-content: center;
-    font-size: 0.95rem;
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.7rem 0;
   }
 
   .nav-bottom {
-    display: none; /* Hide bottom resume + socials on topbar */
+    display: none; /* hide bottom socials */
   }
 
-   /* Move theme toggle to top right */
   .theme-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     width: 38px;
     height: 38px;
     border-radius: 50%;
     background: var(--accent);
     color: var(--btn-text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 1.1rem;
-    box-shadow: 0 4px 15px rgba(162, 89, 255, 0.25);
-    margin-left: auto;
     cursor: pointer;
+    box-shadow: 0 4px 15px rgba(162, 89, 255, 0.25);
   }
 
-  /* Hide the bottom theme toggle section */
-  .nav-bottom {
-    display: none;
+  .hamburger {
+    display: block;
+    font-size: 1.6rem;
+    color: var(--accent);
+    cursor: pointer;
+    z-index: 2100; /* make sure it's on top */
+  }
+
+  .main {
+    margin-left: 0;
+    margin-top: 70px; /* below topbar */
   }
 }
 
@@ -1111,12 +1151,22 @@ const nav = document.querySelector('nav');
 hamburger.addEventListener('click', () => {
   nav.classList.toggle('mobile-active');
   const icon = hamburger.querySelector('i');
-  if (nav.classList.contains('mobile-active')) {
-    icon.classList.replace('fa-bars', 'fa-xmark');
-  } else {
-    icon.classList.replace('fa-xmark', 'fa-bars');
-  }
+  icon.classList.toggle('fa-xmark');
+  icon.classList.toggle('fa-bars');
 });
+
+// Optional: close nav when a menu link is tapped
+document.querySelectorAll('.nav-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    if (window.innerWidth <= 600 && nav.classList.contains('mobile-active')) {
+      nav.classList.remove('mobile-active');
+      const icon = hamburger.querySelector('i');
+      icon.classList.add('fa-bars');
+      icon.classList.remove('fa-xmark');
+    }
+  });
+});
+
 
 
 </script>
