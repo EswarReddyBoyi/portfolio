@@ -570,6 +570,37 @@ nav.mobile-active .nav-actions {
   }
 }
 
+/* ----- Fix mobile bar overflow & prevent horizontal scroll ----- */
+body, html {
+  overflow-x: hidden !important;
+  width: 100%;
+}
+
+/* Ensure mobile topbar fits perfectly */
+.mobile-topbar {
+  width: 100vw; /* exact viewport width */
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Prevent nav shadow or elements from extending screen width */
+nav {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* Ensure elements inside don't cause overflow */
+.mobile-topbar * {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Prevent horizontal scroll when hamburger menu expands */
+.nav-actions {
+  overflow-x: hidden;
+}
 
 </style>
 </head>
