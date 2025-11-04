@@ -516,7 +516,7 @@ nav.mobile-active .nav-actions {
     padding: 0.7rem 1rem;
   }
 
-  .nav-actions {
+.nav-actions {
     display: none;
     position: absolute;
     top: 60px;
@@ -531,6 +531,12 @@ nav.mobile-active .nav-actions {
     transition: all 0.3s ease;
     opacity: 0;
     transform: translateY(-20px);
+  }
+
+  nav.mobile-active .nav-actions.show {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0);
   }
 
   .nav-list {
@@ -608,7 +614,7 @@ nav {
 
 <nav aria-label="Primary">
     <div class="mobile-topbar">
-    <div class="hamburger" id="hamburger" title="Menu">
+    <div class="hamburger" id="hamburgerBtn" title="Menu">
       <i class="fa-solid fa-bars"></i>
     </div>
     <div class="mobile-name">Eswar Reddy Boyi</div>
@@ -1121,18 +1127,22 @@ document.querySelectorAll('a[href="#contact"]').forEach(link=>{
 });
 
 /* ---------- Hamburger toggle for mobile ---------- */
-const hamburger = document.getElementById('hamburger');
+const hamburgerBtn = document.getElementById('hamburgerBtn');
 const nav = document.querySelector('nav');
+const navActions = document.querySelector('.nav-actions');
 
-hamburger.addEventListener('click', () => {
+hamburgerBtn.addEventListener('click', () => {
   nav.classList.toggle('mobile-active');
-  const icon = hamburger.querySelector('i');
+  navActions.classList.toggle('show');
+
+  const icon = hamburgerBtn.querySelector('i');
   if (nav.classList.contains('mobile-active')) {
     icon.classList.replace('fa-bars', 'fa-xmark');
   } else {
     icon.classList.replace('fa-xmark', 'fa-bars');
   }
 });
+
 
 </script>
 </body>
