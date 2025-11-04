@@ -179,6 +179,21 @@ nav{
   padding:2.6rem;
 }
 
+/* Glowing Hire Me button */
+.hire-me {
+  position: relative;
+  text-decoration: none;
+  color: rgba(67, 4, 150, 0.905);
+  background: linear-gradient(90deg, rgba(162,89,255,0.9), rgba(199,125,255,0.8));
+  box-shadow: 0 0 12px rgba(162,89,255,0.6), 0 0 22px rgba(162,89,255,0.4);
+  transition: all 0.3s ease;
+}
+
+.hire-me:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 25px rgba(162,89,255,0.9), 0 0 50px rgba(199,125,255,0.7);
+}
+
 /* Panel system: only one panel visible; animate in/out */
 .panel-wrap{
   width:100%;
@@ -205,6 +220,7 @@ nav{
   pointer-events:none;
   display:block;
 }
+
 
 /* active panel visible */
 .panel.active{
@@ -286,6 +302,11 @@ nav{
 #contactForm input,#contactForm textarea{ width:100%; padding:.8rem; border-radius:8px; border:none; background:var(--bg); color:var(--text); margin-bottom:.6rem; box-shadow:inset 0 0 0 1px rgba(255,255,255,0.02) }
 #contactForm button{ padding:.7rem 1rem; border-radius:8px; border:none; background:var(--accent); color:var(--btn-text); font-weight:700; cursor:pointer }
 
+
+/* Hide by default */
+.mobile-name {
+  display: none;
+}
 /* responsive */
 /* ---------- Responsive Enhancements ---------- */
 
@@ -309,6 +330,17 @@ nav{
 
 /* Phones (≤ 600px): stacked layout with full width */
 @media (max-width: 600px) {
+  .mobile-name {
+    display: block;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--accent);
+    flex: 1;
+    text-align: center;
+    letter-spacing: 0.5px;
+    margin-left: -20px; /* fine-tunes alignment */
+  }
+
   nav {
     position: fixed;
     top: 0;
@@ -320,6 +352,8 @@ nav{
     padding: 0.5rem 0.8rem;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
     z-index: 1400;
+        display: flex;
+    align-items: center;
   }
 
   .main {
@@ -429,6 +463,7 @@ nav.mobile-active .nav-actions {
 @media (max-width: 600px) {
   .hamburger {
     display: block;
+    flex-shrink: 0;
   }
 
   nav {
@@ -471,6 +506,27 @@ nav.mobile-active .nav-actions {
   .nav-bottom {
     display: none; /* Hide bottom resume + socials on topbar */
   }
+
+   /* Move theme toggle to top right */
+  .theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--btn-text);
+    font-size: 1.1rem;
+    box-shadow: 0 4px 15px rgba(162, 89, 255, 0.25);
+    margin-left: auto;
+    cursor: pointer;
+  }
+
+  /* Hide the bottom theme toggle section */
+  .nav-bottom {
+    display: none;
+  }
 }
 
 
@@ -479,11 +535,13 @@ nav.mobile-active .nav-actions {
 <body class="light">
 
 <nav aria-label="Primary">
-  <div class="logo">Eswar Reddy</div>
+  <div class="logo">Eswar Reddy Boyi</div>
   <div class="hamburger" id="hamburger" title="Menu">
     <i class="fa-solid fa-bars"></i>
   </div>
-
+<div class="mobile-name">Eswar Reddy Boyi</div>
+  <!-- Theme toggle (moved up for mobile) -->
+  
   <div class="nav-actions">
     <ul class="nav-list" role="tablist">
       <li><div class="nav-btn active" role="tab" data-target="summary"><i class="fa-solid fa-user"></i><span>About</span></div></li>
@@ -521,10 +579,11 @@ nav.mobile-active .nav-actions {
           <div class="hero-left">
             <img src="profile.jpg" alt="Eswar Reddy" />
             <div style="height:10px"></div>
-            <a class="chips" href="#contact" style="text-decoration:none">Hire Me</a>
+            <a class="chips hire-me" href="#contact">Hire Me</a>
+
           </div>
           <div class="hero-right">
-            <h2 style="display:flex;align-items:center;gap:.6rem"><i class="fa-solid fa-hand-peace section-icon"></i> Hi, I'm <span style="margin-left:6px">Boyi Eswar Reddy</span></h2>
+            <h2 style="display:flex;align-items:center;gap:.6rem"><i class="fa-solid fa-hand-peace section-icon"></i> Hi, I'm <span style="margin-left:6px">Eswar Reddy Boyi</span></h2>
             <div class="tagline small">Full-Stack Developer · AI & ML Engineer · Tech Innovator</div>
             <p class="small" style="margin-top:.8rem">
               I'm an innovative <strong>Computer Science Engineer</strong> with hands-on experience in 
